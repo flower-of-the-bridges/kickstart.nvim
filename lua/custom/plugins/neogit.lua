@@ -10,10 +10,21 @@ return {
       'ibhagwan/fzf-lua', -- optional
       'echasnovski/mini.pick', -- optional
     },
-    config = true,
+    config = function()
+      require("neogit").setup({
+       kind = "split", -- opens neogit in a split 
+       signs = {
+        -- { CLOSED, OPENED }
+        section = { "", "" },
+        item = { "", "" },
+        hunk = { "", "" },
+       },
+       integrations = { diffview = true }, -- adds integration with diffview.nvim
+      })
+    end,
     keys = function(_, keys)
       return {
-        { '<leader>ng', '<cmd>Neogit kind=tab<CR>', desc = 'Open Neogit' },
+        { '<leader>ng', '<cmd>Neogit<CR>', desc = 'Open Neogit' },
         unpack(keys),
       }
     end,
