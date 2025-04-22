@@ -675,9 +675,23 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {
+          tsserver = {
+            settings = {
+              typescript = {
+                suggest = {
+                  autoImports = true, -- Enable auto-import suggestions
+                },
+              },
+              javascript = {
+                suggest = {
+                  autoImports = true, -- Enable auto-import suggestions for JavaScript
+                },
+              },
+            },
+          }
+        },
         --
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -844,7 +858,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       sources = {
